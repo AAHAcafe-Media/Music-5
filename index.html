@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>AAHA · Music 5</title>
+
+<style>
+body {
+  margin: 0;
+  background: #0f0f0f;
+  color: #eaeaea;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+h1 {
+  text-align: center;
+  padding: 20px 0;
+  letter-spacing: 2px;
+}
+.track {
+  padding: 14px 18px;
+  border-bottom: 1px solid #222;
+  cursor: pointer;
+}
+.track:hover {
+  background: #1a1a1a;
+}
+.player {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: #000;
+  padding: 10px;
+}
+audio {
+  width: 100%;
+}
+</style>
+</head>
+
+<body>
+
+<h1>AAHA · Music 5</h1>
+
+<div id="list"></div>
+
+<div class="player">
+  <audio id="audio" controls></audio>
+</div>
+
+<script>
+const tracks = [
+  "test1.mp3",
+  "test2.mp3"
+];
+
+const list = document.getElementById("list");
+const audio = document.getElementById("audio");
+
+tracks.forEach(t => {
+  const d = document.createElement("div");
+  d.className = "track";
+  d.textContent = t.replace(/_/g," ").replace(".mp3","");
+  d.onclick = () => {
+    audio.src = t;
+    audio.play();
+  };
+  list.appendChild(d);
+});
+</script>
+
+</body>
+</html>
